@@ -1,0 +1,62 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    color: #e2e8f0;
+}
+
+main {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.welcome-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.welcome-card {
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    border-radius: 16px;
+    padding: 3rem;
+    width: min(720px, 100%);
+    text-align: center;
+    box-shadow: 0 20px 45px rgba(15, 23, 42, 0.35);
+}
+
+.welcome-card h1 {
+    margin: 0 0 1rem;
+    font-size: 3rem;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #cbd5e1;
+    margin-bottom: 1.5rem;
+}
+
+.welcome-card p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #e2e8f0;
+}
+
+.btn-primary {
+    display: inline-block;
+    margin-top: 1.5rem;
+    text-decoration: none;
+    background: #38bdf8;
+    color: #0f172a;
+    padding: 0.85rem 1.5rem;
+    border-radius: 10px;
+    font-weight: 700;
+}
+
+.btn-primary:hover {
+    background: #7dd3fc;
+}
