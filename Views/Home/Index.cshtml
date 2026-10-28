@@ -10,3 +10,93 @@
         <a class="btn-primary" href="#">Get Started</a>
     </div>
 </div>
+
+<div class="fibonacci-container">
+    <div class="fibonacci-card">
+        <h2>Fibonacci Series</h2>
+        <div class="fibonacci-controls">
+            <label for="fibonacciCount">Number of terms:</label>
+            <input id="fibonacciCount" type="number" min="1" max="50" value="10" />
+            <button id="generateFibonacciBtn" class="btn-primary" type="button">Generate Fibonacci</button>
+        </div>
+        <div id="fibonacciResult" class="fibonacci-result">0, 1, 1, 2, 3, 5, 8, 13, 21, 34</div>
+    </div>
+</div>
+
+<style>
+    .fibonacci-container {
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .fibonacci-card {
+        width: min(600px, 90%);
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        padding: 24px;
+    }
+
+    .fibonacci-card h2 {
+        margin-top: 0;
+        color: #1f2937;
+    }
+
+    .fibonacci-controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        align-items: center;
+        margin: 20px 0;
+    }
+
+    .fibonacci-controls label {
+        font-weight: 600;
+        color: #374151;
+    }
+
+    .fibonacci-controls input {
+        width: 100px;
+        padding: 10px 12px;
+        border: 1px solid #d1d5db;
+        border-radius: 8px;
+        font-size: 1rem;
+    }
+
+    .fibonacci-result {
+        margin-top: 16px;
+        padding: 14px 16px;
+        background: #f3f4f6;
+        border-radius: 8px;
+        color: #111827;
+        font-size: 1.05rem;
+        word-break: break-word;
+    }
+</style>
+
+<script>
+    document.getElementById("generateFibonacciBtn").addEventListener("click", function () {
+        const count = parseInt(document.getElementById("fibonacciCount").value, 10);
+
+        if (!count || count <= 0) {
+            document.getElementById("fibonacciResult").textContent = "Please enter a valid positive number.";
+            return;
+        }
+
+        fetch(`/Home/Fibonacci?count=${count}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Request failed");
+                }
+                return response.json();
+            })
+            .then(data => {
+                const result = Array.isArray(data) ? data.join(", ") : "No data available.";
+                document.getElementById("fibonacciResult").textContent = result;
+            })
+            .catch(() => {
+                document.getElementById("fibonacciResult").textContent = "Unable to generate Fibonacci series.";
+            });
+    });
+</script>
